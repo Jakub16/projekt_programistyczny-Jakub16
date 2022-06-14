@@ -23,23 +23,28 @@
 </nav>
 <form class = login_form_centre>
     <div id = login_form_inner>
-    <div class="mb-3">
-        <label for="username" class="form-label">Nazwa użytkownika:</label>
-        <input type="text" class="form-control" id="username" aria-describedby="usernameHelp">
-        <div id="emailHelp" class="form-text"></div>
-    </div><br/>
-    <div class="mb-3">
-        <label for="password" class="form-label">Hasło:</label>
-        <input type="password" class="form-control" id="password">
-    </div><br>
+        <div class="mb-3">
+            <label for="email" class="form-label">E-mail:</label>
+            <input type="text" class="form-control" id="email" aria-describedby="emailHelp">
+            <div id="emailHelp" class="form-text"></div>
+        </div><br/>
+        <div class="mb-3">
+            <label for="username" class="form-label">Nazwa użytkownika:</label>
+            <input type="text" class="form-control" id="username" aria-describedby="usernameHelp">
+            <div id="usernameHelp" class="form-text"></div>
+        </div><br/>
+        <div class="mb-3">
+            <label for="password" class="form-label">Hasło:</label>
+            <input type="password" class="form-control" id="password">
+        </div><br>
+        <div class="mb-3">
+            <label for="r_password" class="form-label">Powtórz hasło:</label>
+            <input type="password" class="form-control" id="r_password">
+        </div><br>
         <button type="submit" class="btn btn-primary">Zaloguj</button>
-        <button class="btn btn-primary" onclick = "redirect();">Nie masz jeszcze konta? Zarejestruj się!</button>
     </div>
 </form>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js">
-    function redirect() {
-        window.location.href= 'register.php';
-    }
 </script>
 </body>
 </html>

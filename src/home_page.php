@@ -6,21 +6,60 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-<nav class="navbar fixed-top" style="background-color: grey;">
+<nav class="navbar fixed-top" style="background-color: rgb(148,175,187)">
     <div class="container-fluid">
-        <a class="navbar-brand" href="#">Blog</a>
+        <a class="navbar-brand" href="home_page.php">Blog</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
             <div class="navbar-nav">
                 <a class="nav-link active" aria-current="page" href="#">Home</a>
-                <a class="nav-link" href="login.php">Log-in/Register</a>
+                <a class="nav-link" href="login.php">Log-in</a>
                 <a class="nav-link" href="#">Pricing</a>
             </div>
         </div>
     </div>
 </nav>
+
+<div class="grid-container" id="main-container">
+    <div class="grid-item">
+        <div class="inside-content"><button name="button1" type="submit" class="btn btn-primary">TEST</button></div>
+    </div>
+    <div class="grid-item">
+        <div class="inside-content"><button name="button2" type="submit" class="btn btn-primary">TEST</button></div>
+    </div>
+    <div class="grid-item">
+        3
+    </div>
+    <div class="grid-item">
+        4
+    </div>
+    <div class="grid-item">
+        5
+    </div>
+    <div class="grid-item">
+        6
+    </div>
+    <div class="grid-item">
+        7
+    </div>
+    <div class="grid-item">
+        8
+    </div>
+    <div class="grid-item">
+        9
+    </div>
+    <div class="grid-item">
+        10
+    </div>
+    <div class="grid-item">
+        11
+    </div>
+    <div class="grid-item">
+        12
+    </div>
+</div>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"></script>
 </body>
