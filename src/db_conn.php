@@ -7,7 +7,7 @@
         $conn = new PDO($dsn, $username, $password, [PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION]);
 
         if($conn) {
-            echo "Pomyslnie polaczono z baza danych";
+            echo "<br><br><br><br>Pomyslnie polaczono z baza danych";
         }
     }
     catch(PDOException $error) {
