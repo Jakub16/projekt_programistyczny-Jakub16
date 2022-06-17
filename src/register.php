@@ -3,36 +3,61 @@
     require_once "db_conn.php";
     error_reporting(0);
 
-    $dsn = "mysql:host=localhost;dbname=test;charset=UTF8";
-    $username = 'root';
-    $password = '';
-
     $username_input = $_POST['username'];
     $email_input = $_POST['email'];
     $password_input = $_POST['password'];
     $r_password_input = $_POST['r_password'];
 
-    $username = $password = $r_password = "";
-    $username_error = $password_error = $r_password_error = "";
+    $username = $email = $password = $r_password = "";
+    $email_error = $username_error = $password_error = $r_password_error = "";
     $password_strength = "";
 
-    if($_SERVER['REQUEST_METHOD'] == "POST") {
-        if(empty($username_input)) {
-            $username_error = "Proszę podać nazwę użytkownika!";
+    if ($_SERVER['REQUEST_METHOD'] == "POST") {
+
+        if (empty($email_input)) {
+            $email_error = "Proszę wprowadzić adres email!";
+
         }
-        elseif(!preg_match('/^\w+$/', trim($username_input))) {
-            echo $username_error = "Nazwa użytkownika może zawierać jedynie: cyfry oraz małe i duże litery.";
+        elseif (!preg_match("/^[a-z0-9_+-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,})$/i", $email_input)) {
+            $email_error = "Adres email nie spełnia wymaganych kryteriów.";
+
         }
         else {
-            echo "wow";
+            if ($stmt = $conn->prepare("SELECT id FROM user WHERE email = :email")) {
+                $p_email = trim($email_input);
+                $stmt->bindParam(":email", $p_email, PDO::PARAM_STR);
 
-            if($stmt = $conn->prepare("SELECT id FROM user WHERE username = :username")) {
-                $PARAM_STR = PDO::PARAM_STR;
+                if ($stmt->execute()) {
+                    if ($stmt->rowCount() == 1) {
+                        $email_error = "Istnieje już konto przypisane do podanego adresu E-mail.";
+                    }
+                    else {
+                        $email = trim($email_input);
+                    }
+
+                }
+                else {
+                    echo error_get_last();
+                }
+
+                unset($stmt);
+            }
+        }
+
+        if (empty($username_input)) {
+            $username_error = "Proszę podać nazwę użytkownika!";
+        }
+
+        elseif (!preg_match('/^\w+$/', trim($username_input))) {
+            echo $username_error = "Nazwa użytkownika może zawierać jedynie: cyfry oraz małe i wielkie litery.";
+        }
+        else {
+            if ($stmt = $conn->prepare("SELECT id FROM user WHERE username = :username")) {
                 $p_username = trim($username_input);
-                $stmt->bindParam(":username", $p_username, $PARAM_STR);
+                $stmt->bindParam(":username", $p_username, PDO::PARAM_STR);
 
-                if($stmt->execute()) {
-                    if($stmt->rowCount() == 1) {
+                if ($stmt->execute()) {
+                    if ($stmt->rowCount() == 1) {
                         $username_error = "Ta nazwa użytkownika jest już zajęta.";
                     }
                     else {
@@ -41,39 +66,72 @@
                 }
                 else {
                     echo error_get_last();
-                    echo "wow";
                 }
 
                 unset($stmt);
             }
         }
 
-        if(empty(trim($password_input))) {
+        if (empty(trim($password_input))) {
             $password_error = "Proszę wprowadzić hasło!";
         }
-        elseif(strlen(trim($password_input)) < 8) {
+        elseif (strlen(trim($password_input)) < 8) {
             $password_error = "Hasło musi zawierać co najmniej 8 znaków";
             echo "debug";
             echo $password_error;
         }
-        elseif(strlen(trim($password_input)) > 16) {
+        elseif (strlen(trim($password_input)) > 16) {
             $password_error = "Hasło może zawierać maksymalnie 16 znaków";
         }
-        elseif(preg_match("/^(?=.*[!@#$%^&*-])(?=.*[0-9])(?=.*[A-Z]).{14,16}$/", $password_input)) {
+        elseif (preg_match("/^(?=.*[!@#$%^&*-])(?=.*[0-9])(?=.*[A-Z]).{14,16}$/", $password_input)) {
             $password_strength = "strong";
         }
-        elseif(preg_match("/^(?=.*[!@#$%^&*-])(?=.*[0-9])(?=.*[A-Z]).{11,13}$/", $password_input)) {
+        elseif (preg_match("/^(?=.*[!@#$%^&*-])(?=.*[0-9])(?=.*[A-Z]).{11,13}$/", $password_input)) {
             $password_strength = "medium";
         }
-        elseif(preg_match("/^(?=.*[0-9])(?=.*[A-Z]).{8,16}$/", $password_input) || preg_match("/^(?=.*[!@#$%^&*-])(?=.*[0-9])(?=.*[A-Z]).{8,10}$/", $password_input)) {
+        elseif (preg_match("/^(?=.*[0-9])(?=.*[A-Z]).{8,16}$/", $password_input) || preg_match("/^(?=.*[!@#$%^&*-])(?=.*[0-9])(?=.*[A-Z]).{8,10}$/", $password_input)) {
             $password_strength = "weak";
         }
         else {
             $password_error = "Hasło nie spełnia podanych wymogów";
         }
+
+        if (empty(trim($r_password_input))) {
+            $r_password_error = "Proszę powtórzyć hasło!";
+        }
+        else {
+            if (empty(trim($r_password_error)) && ($r_password_input != $password_input)) {
+                $r_password_error = "Hasła muszą być takie same!";
+            }
+            else {
+                $r_password = $r_password_input;
+            }
+        }
+
+
+        if (empty($email_error) && empty($username_error) && empty($password_error) && empty($r_password_error)) {
+            if ($stmt = $conn->prepare("INSERT INTO user (username, password, email) VALUES (:username, :password, :email)")) {
+                $stmt->bindParam(":username", $p_username, PDO::PARAM_STR);
+                $stmt->bindParam(":password", $p_password, PDO::PARAM_STR);
+                $stmt->bindParam(":email", $p_email, PDO::PARAM_STR);
+
+                $p_username = $username;
+                $p_email = $email;
+                $p_password = password_hash($password, PASSWORD_DEFAULT);
+
+                if ($stmt->execute()) {
+                    echo '<script src="js_script.js" type="text/javascript">redirectToLogin();</script>';
+                }
+                else {
+                    error_get_last();
+                }
+
+                unset($stmt);
+            }
+
+            unset($conn);
+        }
     }
-    echo "<br><br>$password_error";
-    echo "<br><br>$password_strength";
 ?>
 
 
@@ -95,7 +153,7 @@
             <div class="navbar-nav">
                 <a class="nav-link" aria-current="page" href="#">Home</a>
                 <a class="nav-link active" href="login.php">Log-in</a>
-                <a class="nav-link" href="#">Pricing</a>
+                <a class="nav-link" href="admin_panel.php">Panel administratora</a>
             </div>
         </div>
     </div>
@@ -105,25 +163,26 @@
         <div class="mb-3">
             <label for="email" class="form-label">E-mail:</label>
             <input type="text" class="form-control" id="email" name = "email" aria-describedby="emailHelp">
-            <div id="emailHelp" class="form-text"></div>
+            <div id="emailHelp" class="form-text">Np.: example_email@example.com</div>
         </div><br/>
         <div class="mb-3">
             <label for="username" class="form-label">Nazwa użytkownika:</label>
             <input type="text" class="form-control" id = "username" name="username" aria-describedby="usernameHelp">
-            <div id="usernameHelp" class="form-text"></div>
+            <div id="usernameHelp" class="form-text">Nazwa może zawierać do 10 znaków i składać się jedynie z cyfr oraz małych i wielkich liter.</div>
         </div><br/>
         <div class="mb-3">
             <label for="password" class="form-label">Hasło:</label>
             <input type="password" class="form-control" id="password" name = "password">
+            <div id="passwordHelp" class="form-text">Hasło może zawierać od 8 do 16 znaków i musi się składać z przynajmniej: <br>-Jednej wielkiej litery,<br>-Jednej cyfry,<br>-Jednego znaku specjalnego (!,@,#,$,%,^,&,* lub -).</div>
         </div><br>
         <div class="mb-3">
             <label for="r_password" class="form-label">Powtórz hasło:</label>
             <input type="password" class="form-control" id="r_password" name = "r_password">
+            <div id="passwordHelp" class="form-text">Hasła muszą być takie same.</div>
         </div><br>
         <button type="submit" class="btn btn-primary" name = "submit">Zaloguj</button>
     </div>
 </form>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js">
-</script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

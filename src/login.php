@@ -14,9 +14,9 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
             <div class="navbar-nav">
-                <a class="nav-link" aria-current="page" href="#">Home</a>
+                <a class="nav-link" aria-current="page" href="home_page.php">Home</a>
                 <a class="nav-link active" href="login.php">Log-in</a>
-                <a class="nav-link" href="#">Pricing</a>
+                <a class="nav-link" href="admin_panel.php">Panel administratora</a>
             </div>
         </div>
     </div>
@@ -26,20 +26,17 @@
     <div class="mb-3">
         <label for="username" class="form-label">Nazwa użytkownika:</label>
         <input type="text" class="form-control" id="username" aria-describedby="usernameHelp">
-        <div id="emailHelp" class="form-text"></div>
+        <div id="usernameHelp" class="form-text"></div>
     </div><br/>
     <div class="mb-3">
         <label for="password" class="form-label">Hasło:</label>
         <input type="password" class="form-control" id="password">
     </div><br>
         <button type="submit" class="btn btn-primary">Zaloguj</button>
-        <button class="btn btn-primary" onclick = "redirect();">Nie masz jeszcze konta? Zarejestruj się!</button>
+        <button class="btn btn-primary" onclick = "redirectToRegister();">Nie masz jeszcze konta? Zarejestruj się!</button>
     </div>
 </form>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js">
-    function redirect() {
-        window.location.href= 'register.php';
-    }
-</script>
+<script type="text/javascript" src="js_script.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

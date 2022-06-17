@@ -14,9 +14,9 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
             <div class="navbar-nav">
-                <a class="nav-link active" aria-current="page" href="#">Home</a>
+                <a class="nav-link active" aria-current="page" href="home_page.php">Home</a>
                 <a class="nav-link" href="login.php">Log-in</a>
-                <a class="nav-link" href="#">Pricing</a>
+                <a class="nav-link" href="admin_panel.php">Panel administratora</a>
             </div>
         </div>
     </div>
