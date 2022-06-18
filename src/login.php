@@ -113,7 +113,7 @@
         <input type="password" class="form-control" id="password" name = "password">
     </div><br>
         <button type="submit" class="btn btn-primary">Zaloguj</button>
-        <button class="btn btn-primary" onclick = "redirectToRegister();">Nie masz jeszcze konta? Zarejestruj się!</button>
+        <button class="btn btn-primary" onclick = "redirectToRegisterDelay();">Nie masz jeszcze konta? Zarejestruj się!</button>
     </div>
 </form>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"></script>
