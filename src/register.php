@@ -11,7 +11,6 @@
 
     $username = $email = $password = $r_password = "";
     $email_error = $username_error = $password_error = $r_password_error = "";
-    $password_strength = "";
 
     if ($_SERVER['REQUEST_METHOD'] == "POST") {
 

@@ -32,6 +32,9 @@
         </div>
     </div>
 </nav>
+<div class = user_panel_centre>
+    <button class="btn btn-primary">test button</button>
+</div>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

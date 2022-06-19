@@ -9,6 +9,12 @@
 <nav class="navbar fixed-top" style="background-color: rgb(148,175,187)">
     <div class="container-fluid">
         <a class="navbar-brand" href="home_page.php">Blog</a>
+        <?php
+        session_start();
+            if(isset($_SESSION['logged_in']) && $_SESSION['logged_in'] === true) {
+                echo "<div class = 'right'>" . "Zalogowano jako: " . $_SESSION['username'] . "</div>";
+            }
+        ?>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -24,42 +30,55 @@
 </nav>
 
 <div class="grid-container" id="main-container">
-    <div class="grid-item">
-        <div class="inside-content"><button name="button1" type="submit" class="btn btn-primary">TEST</button></div>
-    </div>
-    <div class="grid-item">
-        <div class="inside-content"><button name="button2" type="submit" class="btn btn-primary">TEST</button></div>
-    </div>
-    <div class="grid-item">
-        3
-    </div>
-    <div class="grid-item">
-        4
-    </div>
-    <div class="grid-item">
-        5
-    </div>
-    <div class="grid-item">
-        6
-    </div>
-    <div class="grid-item">
-        7
-    </div>
-    <div class="grid-item">
-        8
-    </div>
-    <div class="grid-item">
-        9
-    </div>
-    <div class="grid-item">
-        10
-    </div>
-    <div class="grid-item">
-        11
-    </div>
-    <div class="grid-item">
-        12
-    </div>
+    <?php
+        error_reporting(0);
+        session_start();
+        require_once "db_conn.php";
+
+        if(!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] !== true) {
+            $sql = "SELECT content, is_public, author_id_fk, creation_date FROM blog where is_public = true";
+
+            if($stmt = $conn->prepare($sql)) {
+                if($stmt->execute()) {
+                    if($stmt->rowCount() > 0) {
+                        while($row = $stmt->fetch()) {
+                            echo "<div class = 'grid-item'><div class = inside-content'>" . "<br>" . $row['content'] . "</div></div>";
+                        }
+                    }
+                    else {
+                        echo "Brak wyników";
+                    }
+                }
+                else {
+                    error_get_last();
+                }
+                unset($stmt);
+            }
+            unset($conn);
+        }
+
+        if(isset($_SESSION['logged_in']) && $_SESSION['logged_in'] === true) {
+            $sql = "SELECT content, is_public, author_id_fk, creation_date FROM blog where is_public = false";
+
+            if($stmt = $conn->prepare($sql)) {
+                if($stmt->execute()) {
+                    if($stmt->rowCount() > 0) {
+                        while($row = $stmt->fetch()) {
+                            echo "<div class = 'grid-item'><div class = inside-content'>" . "<br>" . $row['content'] . "</div></div>";
+                        }
+                    }
+                    else {
+                        echo "<h1>Brak wyników.</h1>";
+                    }
+                }
+                else {
+                    error_get_last();
+                }
+                unset($stmt);
+            }
+            unset($conn);
+        }
+    ?>
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"></script>
