@@ -116,3 +116,7 @@ body {
 .right {
     margin-left: 70%;
 }
+
+#redirect_on_click {
+    cursor: pointer;
+}

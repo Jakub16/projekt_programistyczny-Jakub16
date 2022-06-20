@@ -88,6 +88,12 @@
 <nav class="navbar fixed-top" style="background-color: rgb(148,175,187)">
     <div class="container-fluid">
         <a class="navbar-brand" href="home_page.php">Blog</a>
+        <?php
+        session_start();
+        if(isset($_SESSION['logged_in']) && $_SESSION['logged_in'] === true) {
+            echo "<div class = 'right'>" . "Zalogowano jako: " . $_SESSION['username'] . "</div>";
+        }
+        ?>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>

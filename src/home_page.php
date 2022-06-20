@@ -36,13 +36,13 @@
         require_once "db_conn.php";
 
         if(!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] !== true) {
-            $sql = "SELECT content, is_public, author_id_fk, creation_date FROM blog where is_public = true";
+            $sql = "SELECT id, content, is_public, author_id_fk, creation_date FROM blog where is_public = true";
 
             if($stmt = $conn->prepare($sql)) {
                 if($stmt->execute()) {
                     if($stmt->rowCount() > 0) {
                         while($row = $stmt->fetch()) {
-                            echo "<div class = 'grid-item'><div class = inside-content'>" . "<br>" . $row['content'] . "</div></div>";
+                            echo "<div class = 'grid-item' id = 'redirect_on_click'><div class = inside-content'>" . "<br>" . $row['content'] . "</div></div>";
                         }
                     }
                     else {
@@ -58,13 +58,13 @@
         }
 
         if(isset($_SESSION['logged_in']) && $_SESSION['logged_in'] === true) {
-            $sql = "SELECT content, is_public, author_id_fk, creation_date FROM blog where is_public = false";
+            $sql = "SELECT id, content, is_public, author_id_fk, creation_date FROM blog where is_public = false";
 
             if($stmt = $conn->prepare($sql)) {
                 if($stmt->execute()) {
                     if($stmt->rowCount() > 0) {
                         while($row = $stmt->fetch()) {
-                            echo "<div class = 'grid-item'><div class = inside-content'>" . "<br>" . $row['content'] . "</div></div>";
+                            echo "<div class = 'grid-item' id = 'redirect_on_click'><div class = inside-content'>" . "<br>" . $row['content'] . "<br>" . "</div></div>";
                         }
                     }
                     else {
@@ -80,7 +80,7 @@
         }
     ?>
 </div>
-
+<script src = "js_script.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

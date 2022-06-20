@@ -24,3 +24,7 @@ function errorAlert(error) {
     alert(error);
 }
 
+document.getElementById("redirect_on_click").addEventListener("click", function () {
+    window.open("blog_page.php");
+})
+

@@ -1,18 +1,7 @@
-<?php
-    error_reporting(0);
-
-    echo "<script type = 'text/javascript' src = 'js_script.js'></script>";
-    session_start();
-
-    if(!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] !== true) {
-        echo "<script type = 'text/javascript'>redirectToLogin();</script>";
-    }
-?>
-
 <html lang="pl">
 <head>
     <meta charset="UTF-8">
-    <title>Panel klienta</title>
+    <title>Strona Bloga</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
     <link rel="stylesheet" href="styles.css">
 </head>
@@ -33,40 +22,12 @@
             <div class="navbar-nav">
                 <a class="nav-link" aria-current="page" href="home_page.php">Strona główna</a>
                 <a class="nav-link" href="login.php">Zaloguj</a>
-                <a class="nav-link active" href="user_panel.php">Panel klienta</a>
+                <a class="nav-link" href="user_panel.php">Panel klienta</a>
                 <a class="nav-link" href="admin_panel.php">Panel administratora</a>
             </div>
         </div>
     </div>
 </nav>
-<div class="grid-container" id="main-container">
-<?php
-    require_once "db_conn.php";
-
-    $sql = "SELECT id, content, is_public, author_id_fk, creation_date FROM blog where author_id_fk = :user_id";
-
-    if($stmt = $conn->prepare($sql)) {
-        $p_user_id = $_SESSION['user_id'];
-        $stmt->bindParam(":user_id", $p_user_id, PDO::PARAM_STR);
-
-        if($stmt->execute()) {
-            if($stmt->rowCount() > 0) {
-                while($row = $stmt->fetch()) {
-                    echo "<div class = 'grid-item'><div class = inside-content'>" . "<br>" . $row['content'] . "</div></div>";
-                }
-            }
-            else {
-                echo "Brak wyników";
-            }
-        }
-        else {
-            error_get_last();
-        }
-        unset($stmt);
-    }
-    unset($conn);
-?>
-</div>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
