@@ -1,6 +1,8 @@
 <?php
     error_reporting(0);
 
+    require_once "truncate_function.php";
+
     echo "<script type = 'text/javascript' src = 'js_script.js'></script>";
     session_start();
 
@@ -43,7 +45,7 @@
 <?php
     require_once "db_conn.php";
 
-    $sql = "SELECT id, content, is_public, author_id_fk, creation_date FROM blog where author_id_fk = :user_id";
+    $sql = "SELECT user.id, username, content, is_public, author_id_fk, blog.creation_date FROM blog join user on user.id = blog.author_id_fk and author_id_fk = :user_id";
 
     if($stmt = $conn->prepare($sql)) {
         $p_user_id = $_SESSION['user_id'];
@@ -52,7 +54,7 @@
         if($stmt->execute()) {
             if($stmt->rowCount() > 0) {
                 while($row = $stmt->fetch()) {
-                    echo "<div class = 'grid-item'><div class = inside-content'>" . "<br>" . $row['content'] . "</div></div>";
+                    echo "<div class = 'grid-item' id = 'redirect_on_click'><div class = 'inside-content'>" . "<div class = 'blog_author_text'>Autor: " . $row['username'] . "</div>" . "<div class = 'creation_date_text'>Utworzono: " . $row['creation_date'] . "</div>" . "<div>" . truncate($row['content'], 1100) . "</div></div></div>";
                 }
             }
             else {

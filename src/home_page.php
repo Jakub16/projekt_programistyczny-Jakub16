@@ -34,15 +34,16 @@
         error_reporting(0);
         session_start();
         require_once "db_conn.php";
+        require_once "truncate_function.php";
 
         if(!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] !== true) {
-            $sql = "SELECT id, content, is_public, author_id_fk, creation_date FROM blog where is_public = true";
+            $sql = "SELECT blog.id, content, is_public, author_id_fk, blog.creation_date, username FROM blog join user on blog.author_id_fk = user.id and is_public = false;";
 
             if($stmt = $conn->prepare($sql)) {
                 if($stmt->execute()) {
                     if($stmt->rowCount() > 0) {
                         while($row = $stmt->fetch()) {
-                            echo "<div class = 'grid-item' id = 'redirect_on_click'><div class = inside-content'>" . "<br>" . $row['content'] . "</div></div>";
+                            echo "<div class = 'grid-item' id = 'redirect_on_click'><div class = 'inside-content'>" . "<div class = 'blog_author_text'>Autor: " . $row['username'] . "</div>" . "<div class = 'creation_date_text'>Utworzono: " . $row['creation_date'] . "</div>" . "<div>" . truncate($row['content'], 1100) . "</div></div></div>";
                         }
                     }
                     else {
@@ -58,13 +59,13 @@
         }
 
         if(isset($_SESSION['logged_in']) && $_SESSION['logged_in'] === true) {
-            $sql = "SELECT id, content, is_public, author_id_fk, creation_date FROM blog where is_public = false";
+            $sql = "SELECT blog.id, content, is_public, author_id_fk, blog.creation_date, username FROM blog join user on blog.author_id_fk = user.id and is_public = false;";
 
             if($stmt = $conn->prepare($sql)) {
                 if($stmt->execute()) {
                     if($stmt->rowCount() > 0) {
                         while($row = $stmt->fetch()) {
-                            echo "<div class = 'grid-item' id = 'redirect_on_click'><div class = inside-content'>" . "<br>" . $row['content'] . "<br>" . "</div></div>";
+                            echo "<div class = 'grid-item' id = 'redirect_on_click'><div class = 'inside-content'>" . "<div class = 'blog_author_text'>Autor: " . $row['username'] . "</div>" . "<div class = 'creation_date_text'>Utworzono: " . $row['creation_date'] . "</div>" . "<div>" . truncate($row['content'], 1100) . "</div></div></div>";
                         }
                     }
                     else {

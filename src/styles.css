@@ -34,22 +34,13 @@
     box-shadow: rgba(3,8,20,0.1) 0 0.01em 1em, rgba(2,8,20,0.08) 0 0.175em 0.5em;
     background-color: rgba(3, 8, 20, 0.85);
     transform: translateY(-0.5px) scale(1.04);
-    opacity: 1;
 
 }
 
 .inside-content {
     transition: all 600ms;
-    opacity: 0;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    text-align: center;
-}
-
-.grid-item:hover .inside-content {
-    opacity: 1;
+    text-align: justify;
+    margin: 1%;
 }
 
 body {
@@ -119,4 +110,22 @@ body {
 
 #redirect_on_click {
     cursor: pointer;
+}
+
+.blog_redirect_text {
+    font-weight: bolder;
+    font-family: Arial Black, serif;
+    color: rgb(192, 89, 76);
+}
+
+.blog_author_text {
+    font-weight: bold;
+    font-family: Arial Black, serif;
+    color: rgb(204, 122, 122);
+}
+
+.creation_date_text {
+    font-weight: bold;
+    font-family: Arial Black, serif;
+    color: rgb(204, 122, 122);
 }
