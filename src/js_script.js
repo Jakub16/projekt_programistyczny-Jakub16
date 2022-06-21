@@ -24,7 +24,14 @@ function errorAlert(error) {
     alert(error);
 }
 
-document.getElementById("redirect_on_click").addEventListener("click", function () {
-    window.open("blog_page.php");
+document.querySelectorAll('.grid-item').forEach(item=> {
+    item.addEventListener('click', event => {
+        if (document.getElementById("redirect_on_click")) {
+            window.open('blog_page.php');
+        }
+        if(document.getElementById("redirect_to_admin_on_click")) {
+            window.open("blog_administrate_page.php");
+        }
+    })
 })
 

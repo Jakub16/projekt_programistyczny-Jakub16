@@ -41,6 +41,9 @@
         </div>
     </div>
 </nav>
+<div class = "grid-container1">
+    <div class = "grid-item1">Twoje publikacje:</div><br>
+</div>
 <div class="grid-container" id="main-container">
 <?php
     require_once "db_conn.php";
@@ -54,7 +57,8 @@
         if($stmt->execute()) {
             if($stmt->rowCount() > 0) {
                 while($row = $stmt->fetch()) {
-                    echo "<div class = 'grid-item' id = 'redirect_on_click'><div class = 'inside-content'>" . "<div class = 'blog_author_text'>Autor: " . $row['username'] . "</div>" . "<div class = 'creation_date_text'>Utworzono: " . $row['creation_date'] . "</div>" . "<div>" . truncate($row['content'], 1100) . "</div></div></div>";
+
+                    echo "<div class = 'grid-item' id = 'redirect_to_admin_on_click'><div class = 'inside-content'>" . "<div class = 'blog_author_text'>Autor: " . $row['username'] . "</div>" . "<div class = 'creation_date_text'>Utworzono: " . $row['creation_date'] . "</div>" . "<div>" . truncate($row['content'], 1100) . "</div></div></div>";
                 }
             }
             else {
@@ -69,6 +73,7 @@
     unset($conn);
 ?>
 </div>
+<script type = 'text/javascript' src = 'js_script.js'></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

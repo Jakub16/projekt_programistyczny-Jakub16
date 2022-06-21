@@ -29,7 +29,7 @@
     </div>
 </nav>
 
-<div class="grid-container" id="main-container">
+<div class="grid-container2" id="main-container">
     <?php
         error_reporting(0);
         session_start();
