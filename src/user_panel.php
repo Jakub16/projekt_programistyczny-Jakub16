@@ -42,7 +42,7 @@
     </div>
 </nav>
 <div class = "grid-container1">
-    <div class = "grid-item1">Twoje publikacje:</div><br>
+    <div class = "grid-item-special-font">Twoje publikacje:</div><br>
 </div>
 <div class="grid-container" id="main-container">
 <?php

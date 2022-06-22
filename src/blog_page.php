@@ -28,7 +28,13 @@
         </div>
     </div>
 </nav>
+<div class = "grid-container-fit-content">
+    <div class = "grid-item-no-animation">
+        <div class = "inside-content">
 
+        </div>
+    </div>
+</div>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
