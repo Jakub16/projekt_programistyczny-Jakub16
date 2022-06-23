@@ -37,13 +37,28 @@
         require_once "truncate_function.php";
 
         if(!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] !== true) {
-            $sql = "SELECT blog.id, content, is_public, author_id_fk, blog.creation_date, username FROM blog join user on blog.author_id_fk = user.id and is_public = false;";
+            $sql = "SELECT blog.id as blog_id, content, is_public, author_id_fk, blog.creation_date, username FROM blog join user on blog.author_id_fk = user.id and is_public = true;";
 
             if($stmt = $conn->prepare($sql)) {
                 if($stmt->execute()) {
                     if($stmt->rowCount() > 0) {
                         while($row = $stmt->fetch()) {
-                            echo "<div class = 'grid-item' id = 'redirect_on_click'><div class = 'inside-content'>" . "<div class = 'blog_author_text'>Autor: " . $row['username'] . "</div>" . "<div class = 'creation_date_text'>Utworzono: " . $row['creation_date'] . "</div>" . "<div>" . truncate($row['content'], 1100) . "</div></div></div>";
+                            echo "<div class = 'grid-item'>
+                                        <div class = 'inside-content'>
+                                            <div class = 'blog_author_text'>
+                                                Autor: " . $row['username'] . "
+                                            </div>
+                                            <div class = 'creation_date_text'>
+                                                Utworzono: " . $row['creation_date'] . "
+                                            </div>
+                                            <div>" . truncate($row['content'], 1100) . "
+                                                <form method='post' action = 'blog_page.php'>
+                                                <input type = 'hidden' name = 'blog_id_input' value = $row[blog_id]>
+                                                <input type = 'submit' name = submit>
+                                                </form>
+                                            </div>
+                                        </div>
+                                  </div>";
                         }
                     }
                     else {
@@ -59,13 +74,28 @@
         }
 
         if(isset($_SESSION['logged_in']) && $_SESSION['logged_in'] === true) {
-            $sql = "SELECT blog.id, content, is_public, author_id_fk, blog.creation_date, username FROM blog join user on blog.author_id_fk = user.id and is_public = false;";
+            $sql = "SELECT blog.id as blog_id, content, is_public, blog.creation_date, username FROM blog join user on blog.author_id_fk = user.id;";
 
             if($stmt = $conn->prepare($sql)) {
                 if($stmt->execute()) {
                     if($stmt->rowCount() > 0) {
                         while($row = $stmt->fetch()) {
-                            echo "<div class = 'grid-item' id = 'redirect_on_click'><div class = 'inside-content'>" . "<div class = 'blog_author_text'>Autor: " . $row['username'] . "</div>" . "<div class = 'creation_date_text'>Utworzono: " . $row['creation_date'] . "</div>" . "<div>" . truncate($row['content'], 1100) . "</div></div></div>";
+                            echo "<div class = 'grid-item'>
+                                        <div class = 'inside-content'>
+                                            <div class = 'blog_author_text'>
+                                                Autor: " . $row['username'] . "
+                                            </div>
+                                            <div class = 'creation_date_text'>
+                                                Utworzono: " . $row['creation_date'] . "
+                                            </div>
+                                            <div>" . truncate($row['content'], 1100) . "
+                                                <form method='post' action = 'blog_page.php'>
+                                                <input type = 'hidden' name = 'blog_id_input' value = $row[blog_id]>
+                                                <input type = 'submit' name = submit>
+                                                </form>
+                                            </div>
+                                        </div>
+                                  </div>";
                         }
                     }
                     else {

@@ -24,14 +24,3 @@ function errorAlert(error) {
     alert(error);
 }
 
-document.querySelectorAll('.grid-item').forEach(item=> {
-    item.addEventListener('click', event => {
-        if (document.getElementById("redirect_on_click")) {
-            window.open('blog_page.php');
-        }
-        if(document.getElementById("redirect_to_admin_on_click")) {
-            window.open("blog_administrate_page.php");
-        }
-    })
-})
-

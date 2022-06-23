@@ -30,8 +30,19 @@
 </nav>
 <div class = "grid-container-fit-content">
     <div class = "grid-item-no-animation">
-        <div class = "inside-content">
+        <div class = "inside-content" id = "blog-content">
+            <?php
 
+                //error_reporting(0);
+                require_once "db_conn.php";
+                $blog_id  = $_POST['blog_id_input'];
+
+
+                if ($_SERVER['REQUEST_METHOD'] == "POST") {
+                    $sql = "SELECT content, username, blog.creation_date FROM blog join user on blog.author_id_fk = user.id and blog.id = :blog_id;";
+                }
+
+            ?>
         </div>
     </div>
 </div>
