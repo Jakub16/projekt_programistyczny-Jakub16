@@ -52,7 +52,7 @@
 
     if($stmt = $conn->prepare($sql)) {
         $p_user_id = $_SESSION['user_id'];
-        $stmt->bindParam(":user_id", $p_user_id, PDO::PARAM_STR);
+        $stmt->bindParam(":user_id", $p_user_id);
 
         if($stmt->execute()) {
             if($stmt->rowCount() > 0) {

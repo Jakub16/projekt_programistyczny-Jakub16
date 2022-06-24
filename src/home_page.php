@@ -51,7 +51,7 @@
                                             <div class = 'creation_date_text'>
                                                 Utworzono: " . $row['creation_date'] . "
                                             </div>
-                                            <div>" . truncate($row['content'], 1100) . "
+                                            <div>" . truncate($row['content'], 1000) . "
                                                 <form method='post' action = 'blog_page.php'>
                                                 <input type = 'hidden' name = 'blog_id_input' value = $row[blog_id]>
                                                 <input type = 'submit' name = submit>
@@ -88,7 +88,7 @@
                                             <div class = 'creation_date_text'>
                                                 Utworzono: " . $row['creation_date'] . "
                                             </div>
-                                            <div>" . truncate($row['content'], 1100) . "
+                                            <div>" . truncate($row['content'], 1000) . "
                                                 <form method='post' action = 'blog_page.php'>
                                                 <input type = 'hidden' name = 'blog_id_input' value = $row[blog_id]>
                                                 <input type = 'submit' name = submit>

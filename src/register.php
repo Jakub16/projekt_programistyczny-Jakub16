@@ -27,7 +27,7 @@
         else {
             if ($stmt = $conn->prepare("SELECT id FROM user WHERE email = :email")) {
                 $p_email = trim($email_input);
-                $stmt->bindParam(":email", $p_email, PDO::PARAM_STR);
+                $stmt->bindParam(":email", $p_email);
 
                 if ($stmt->execute()) {
                     if ($stmt->rowCount() == 1) {

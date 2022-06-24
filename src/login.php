@@ -35,7 +35,7 @@
 
         if(empty($username_error) && empty($password_error)) {
             if($stmt = $conn->prepare("SELECT id, username, password FROM user WHERE username = :username")) {
-                $stmt->bindParam(":username", $p_username, PDO::PARAM_STR);
+                $stmt->bindParam(":username", $p_username);
                 $p_username = $username;
 
                 if($stmt->execute()) {
