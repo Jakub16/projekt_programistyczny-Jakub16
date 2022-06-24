@@ -141,20 +141,6 @@ body {
     margin-left: 70%;
 }
 
-#redirect_on_click {
-    cursor: pointer;
-}
-
-#redirect_to_admin_on_click {
-    cursor: pointer;
-}
-
-.blog_redirect_text {
-    font-weight: bolder;
-    font-family: Arial Black, serif;
-    color: rgb(192, 89, 76);
-}
-
 .blog_author_text {
     font-weight: bold;
     font-family: Arial Black, serif;
@@ -165,4 +151,13 @@ body {
     font-weight: bold;
     font-family: Arial Black, serif;
     color: rgb(204, 122, 122);
+}
+
+#submit-button {
+    font-weight: bold;
+    font-family: Arial Black, serif;
+    color: rgb(255, 255, 255);
+    background-color: rgb(204, 122, 122);
+    border-color: ghostwhite;
+    margin-top: 2%;
 }

@@ -42,13 +42,15 @@
     </div>
 </nav>
 <div class = "grid-container1">
-    <div class = "grid-item-special-font">Twoje publikacje:</div><br>
+    <div class = "grid-item-special-font">
+        Twoje publikacje:
+    </div><br>
 </div>
 <div class="grid-container" id="main-container">
 <?php
     require_once "db_conn.php";
 
-    $sql = "SELECT user.id, username, content, is_public, author_id_fk, blog.creation_date FROM blog join user on user.id = blog.author_id_fk and author_id_fk = :user_id";
+    $sql = "SELECT blog.id as blog_id, user.id, username, content, is_public, author_id_fk, blog.creation_date FROM blog join user on user.id = blog.author_id_fk and author_id_fk = :user_id";
 
     if($stmt = $conn->prepare($sql)) {
         $p_user_id = $_SESSION['user_id'];
@@ -58,7 +60,23 @@
             if($stmt->rowCount() > 0) {
                 while($row = $stmt->fetch()) {
 
-                    echo "<div class = 'grid-item' id = 'redirect_to_admin_on_click'><div class = 'inside-content'>" . "<div class = 'blog_author_text'>Autor: " . $row['username'] . "</div>" . "<div class = 'creation_date_text'>Utworzono: " . $row['creation_date'] . "</div>" . "<div>" . truncate($row['content'], 1100) . "</div></div></div>";
+                    echo "<div class = 'grid-item'>
+                            <div class = 'inside-content'>
+                                <div class = 'blog_author_text'>
+                                    Autor: " . $row['username'] . "
+                                </div>
+                                <div class = 'creation_date_text'>
+                                Utworzono: " . $row['creation_date'] . "
+                                </div>
+                                <div>
+                                " . truncate($row['content'], 1000) . "
+                                <form method='post' action = 'blog_administrate_page.php'>
+                                    <input type = 'hidden' name = 'admin_blog_id_input' value = $row[blog_id]>
+                                    <input type = 'submit' name = submit id = 'submit-button' value = 'Kliknij aby przeczytać resztę!'>
+                                </form>
+                                </div>
+                            </div>
+                          </div>";
                 }
             }
             else {

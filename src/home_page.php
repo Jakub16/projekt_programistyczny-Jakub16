@@ -54,7 +54,7 @@
                                             <div>" . truncate($row['content'], 1000) . "
                                                 <form method='post' action = 'blog_page.php'>
                                                 <input type = 'hidden' name = 'blog_id_input' value = $row[blog_id]>
-                                                <input type = 'submit' name = submit>
+                                                <input type = 'submit' name = submit id = 'submit-button' value = 'Kliknij aby przeczytać resztę!'>
                                                 </form>
                                             </div>
                                         </div>
@@ -91,7 +91,7 @@
                                             <div>" . truncate($row['content'], 1000) . "
                                                 <form method='post' action = 'blog_page.php'>
                                                 <input type = 'hidden' name = 'blog_id_input' value = $row[blog_id]>
-                                                <input type = 'submit' name = submit>
+                                                <input type = 'submit' name = submit id = 'submit-button' value = 'Kliknij aby przeczytać resztę!'>
                                                 </form>
                                             </div>
                                         </div>
