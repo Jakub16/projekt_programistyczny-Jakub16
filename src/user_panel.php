@@ -35,13 +35,21 @@
             <div class="navbar-nav">
                 <a class="nav-link" aria-current="page" href="home_page.php">Strona główna</a>
                 <a class="nav-link" href="login.php">Zaloguj</a>
+                <a class="nav-link" href="logout.php">Wyloguj</a>
                 <a class="nav-link active" href="user_panel.php">Panel klienta</a>
                 <a class="nav-link" href="admin_panel.php">Panel administratora</a>
             </div>
         </div>
     </div>
 </nav>
-<div class = "grid-container1">
+<div class = "grid-container1" style = "margin-top: 100px;">
+    <div class = "grid-item">
+        <form name = "add_post_form" method="post" action = "">
+            <input type = "submit" name = "add_post" id = "submit-button-no-margin" value = "Kliknij, aby dodać nowy wpis!">
+        </form>
+    </div>
+</div>
+<div class = "grid-container1" style = "margin-top: 20px;">
     <div class = "grid-item-special-font">
         Twoje publikacje:
     </div><br>

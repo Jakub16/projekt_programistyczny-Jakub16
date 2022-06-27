@@ -1,5 +1,5 @@
 <?php
-    $dsn = "mysql:host=localhost;dbname=test;charset=UTF8";
+    $dsn = "mysql:host=localhost;dbname=blog_site;charset=UTF8";
     $username = 'root';
     $password = '';
 

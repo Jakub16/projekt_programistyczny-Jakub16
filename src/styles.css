@@ -113,7 +113,7 @@ body {
     grid-template-rows: fit-content(100%) 1fr;
     margin-left: 50px;
     margin-right: 50px;
-    margin-bottom: 300px;
+    margin-bottom: 30px;
     margin-top: 100px;
 }
 
@@ -160,4 +160,12 @@ body {
     background-color: rgb(204, 122, 122);
     border-color: ghostwhite;
     margin-top: 2%;
+}
+
+#submit-button-no-margin {
+    font-weight: bold;
+    font-family: Arial Black, serif;
+    color: rgb(255, 255, 255);
+    background-color: rgb(204, 122, 122);
+    border-color: ghostwhite;
 }

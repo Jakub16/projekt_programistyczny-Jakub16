@@ -79,6 +79,10 @@
                 Wybierz opcje:
                 <br>
             </div><br>
+            <div class = "grid-item-special-font">
+                Wybierz opcje:
+                <br>
+            </div><br>
         </div>
     </div>
 </div>
