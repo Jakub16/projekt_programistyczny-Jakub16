@@ -44,7 +44,7 @@
 </nav>
 <div class = "grid-container1" style = "margin-top: 100px;">
     <div class = "grid-item">
-        <form name = "add_post_form" method="post" action = "">
+        <form name = "add_post_form" method="post" action = "new_post.php">
             <input type = "submit" name = "add_post" id = "submit-button-no-margin" value = "Kliknij, aby dodać nowy wpis!">
         </form>
     </div>

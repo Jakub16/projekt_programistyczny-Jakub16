@@ -170,6 +170,7 @@
             <div class="navbar-nav">
                 <a class="nav-link" aria-current="page" href="home_page.php">Strona główna</a>
                 <a class="nav-link active" href="login.php">Zaloguj</a>
+                <a class="nav-link" href="logout.php">Wyloguj</a>
                 <a class="nav-link" href="user_panel.php">Panel klienta</a>
                 <a class="nav-link" href="admin_panel.php">Panel administratora</a>
             </div>
@@ -191,7 +192,7 @@
         <div class="mb-3">
             <label for="password" class="form-label">Hasło:</label>
             <input type="password" class="form-control" id="password" name = "password">
-            <div id="passwordHelp" class="form-text">Hasło może zawierać od 8 do 16 znaków i musi się składać z przynajmniej: <br>-Jednej wielkiej litery,<br>-Jednej cyfry,<br>-Jednego znaku specjalnego (!,@,#,$,%,^,&,* lub -).</div>
+            <div id="passwordHelp" class="form-text">Hasło może zawierać od 8 do 16 znaków i musi się składać z przynajmniej: <br>-Jednej wielkiej litery,<br>-Jednej cyfry.</div>
         </div><br>
         <div class="mb-3">
             <label for="r_password" class="form-label">Powtórz hasło:</label>

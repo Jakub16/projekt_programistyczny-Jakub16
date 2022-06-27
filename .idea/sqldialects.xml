@@ -5,6 +5,7 @@
     <file url="file://$PROJECT_DIR$/src/blog_page.php" dialect="GenericSQL" />
     <file url="file://$PROJECT_DIR$/src/home_page.php" dialect="GenericSQL" />
     <file url="file://$PROJECT_DIR$/src/login.php" dialect="GenericSQL" />
+    <file url="file://$PROJECT_DIR$/src/new_post.php" dialect="GenericSQL" />
     <file url="file://$PROJECT_DIR$/src/register.php" dialect="GenericSQL" />
     <file url="file://$PROJECT_DIR$/src/user_panel.php" dialect="GenericSQL" />
   </component>

@@ -22,6 +22,7 @@
             <div class="navbar-nav">
                 <a class="nav-link active" aria-current="page" href="home_page.php">Strona główna</a>
                 <a class="nav-link" href="login.php">Zaloguj</a>
+                <a class="nav-link" href="logout.php">Wyloguj</a>
                 <a class="nav-link" href="user_panel.php">Panel klienta</a>
                 <a class="nav-link" href="admin_panel.php">Panel administratora</a>
             </div>

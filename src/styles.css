@@ -123,11 +123,28 @@ body {
     display: flex;
     justify-content: center;
 }
+
 #login_form_inner {
     background-color: rgb(148,175,187);
     border: 3px solid black;
     border-radius: 5px;
     padding: 10px;
+}
+
+.new_post_form_inner {
+    background-color: rgb(148,175,187);
+    border: 3px solid black;
+    border-radius: 5px;
+    padding: 10px;
+    width: auto;
+
+}
+
+.new_post_form_centre {
+    margin-top: 10%;
+    width:100%;
+    display: flex;
+    justify-content: center;
 }
 
 .user_panel_centre {
@@ -167,5 +184,6 @@ body {
     font-family: Arial Black, serif;
     color: rgb(255, 255, 255);
     background-color: rgb(204, 122, 122);
+    margin-top: 5%;
     border-color: ghostwhite;
 }
