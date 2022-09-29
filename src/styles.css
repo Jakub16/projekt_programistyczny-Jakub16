@@ -1,0 +1,189 @@
+
+.grid-container {
+    display: grid;
+    gap: 3rem;
+    grid-template-columns: repeat(2, 1fr);
+    grid-auto-rows: 400px;
+    margin-left: 50px;
+    margin-right: 50px;
+    margin-bottom: 300px;
+}
+
+.grid-item {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(3, 8, 20, 0.79);
+    color: white;
+    box-shadow: rgba(3,8,20,0.1) 0 0.15rem 0.5rem, rgba(2,8,20,0.1) 0 0.075rem 0.175rem;
+    height: 100%;
+    width: 100%;
+    border-radius: 5px;
+    transition: all 600ms;
+    overflow: hidden;
+
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.grid-item:hover {
+    box-shadow: rgba(3,8,20,0.1) 0 0.01em 1em, rgba(2,8,20,0.08) 0 0.175em 0.5em;
+    background-color: rgba(3, 8, 20, 0.85);
+    transform: translateY(-0.5px) scale(1.04);
+
+}
+
+.inside-content {
+    transition: all 600ms;
+    text-align: justify;
+    margin: 1%;
+}
+
+body {
+    background-image: url("https://images.pexels.com/photos/11255523/pexels-photo-11255523.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1");
+}
+
+.grid-container1 {
+    display: grid;
+    gap: 3rem;
+    grid-template-columns: repeat(1, 1fr);
+    grid-auto-rows: 40px;
+    margin-left: 50px;
+    margin-right: 50px;
+    margin-top: 100px;
+}
+
+.grid-item-special-font {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(3, 8, 20, 0.79);
+    color: white;
+    font-weight: bolder;
+    box-shadow: rgba(3,8,20,0.1) 0 0.15rem 0.5rem, rgba(2,8,20,0.1) 0 0.075rem 0.175rem;
+    height: 100%;
+    width: 100%;
+    border-radius: 5px;
+    transition: all 600ms;
+    overflow: hidden;
+
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.grid-item-no-animation {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(3, 8, 20, 0.79);
+    color: white;
+    box-shadow: rgba(3,8,20,0.1) 0 0.15rem 0.5rem, rgba(2,8,20,0.1) 0 0.075rem 0.175rem;
+    height: 100%;
+    width: 100%;
+    border-radius: 5px;
+    transition: all 600ms;
+    overflow: hidden;
+
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.grid-container2 {
+    display: grid;
+    gap: 3rem;
+    grid-template-columns: repeat(2, 1fr);
+    grid-auto-rows: 400px;
+    margin-left: 50px;
+    margin-right: 50px;
+    margin-bottom: 300px;
+    margin-top: 100px;
+}
+
+.grid-container-fit-content {
+    display: grid;
+    justify-content: center;
+    gap: 3rem;
+    grid-template-columns: fit-content(100%) 1fr;
+    grid-template-rows: fit-content(100%) 1fr;
+    margin-left: 50px;
+    margin-right: 50px;
+    margin-bottom: 30px;
+    margin-top: 100px;
+}
+
+.login_form_centre {
+    margin-top: 10%;
+    width:100%;
+    display: flex;
+    justify-content: center;
+}
+
+#login_form_inner {
+    background-color: rgb(148,175,187);
+    border: 3px solid black;
+    border-radius: 5px;
+    padding: 10px;
+}
+
+.new_post_form_inner {
+    background-color: rgb(148,175,187);
+    border: 3px solid black;
+    border-radius: 5px;
+    padding: 10px;
+    width: auto;
+
+}
+
+.new_post_form_centre {
+    margin-top: 10%;
+    width:100%;
+    display: flex;
+    justify-content: center;
+}
+
+.user_panel_centre {
+    margin-top: 10%;
+    width:100%;
+    display: flex;
+    justify-content: center;
+}
+
+.right {
+    margin-left: 70%;
+}
+
+.blog_author_text {
+    font-weight: bold;
+    font-family: Arial Black, serif;
+    color: rgb(204, 122, 122);
+}
+
+.creation_date_text {
+    font-weight: bold;
+    font-family: Arial Black, serif;
+    color: rgb(204, 122, 122);
+}
+
+#submit-button {
+    font-weight: bold;
+    font-family: Arial Black, serif;
+    color: rgb(255, 255, 255);
+    background-color: rgb(204, 122, 122);
+    border-color: ghostwhite;
+    margin-top: 2%;
+}
+
+#submit-button-no-margin {
+    font-weight: bold;
+    font-family: Arial Black, serif;
+    color: rgb(255, 255, 255);
+    background-color: rgb(204, 122, 122);
+    margin-top: 5%;
+    border-color: ghostwhite;
+}
